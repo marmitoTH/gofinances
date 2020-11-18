@@ -1,3 +1,4 @@
+import ServiceError from '@/exceptions/ServiceError'
 import { Request, Response } from 'express'
 import ImportTransactionsUseCase from './ImportTransactionsUseCase'
 
@@ -12,7 +13,7 @@ class ImportTransactionsController {
 
     try {
       if (!file) {
-        throw new Error('No file sent')
+        throw new ServiceError('No file sent')
       }
 
       const createdTransactions = await

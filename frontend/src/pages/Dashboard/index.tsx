@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useAuth } from '../../hooks/auth'
 import api from '../../services/api'
 import { Container, Main } from './styles'
 import Balance from '../../components/Balance'
@@ -23,18 +24,24 @@ interface CategoryData {
 }
 
 function Dashboard() {
+  const { token } = useAuth()
   const [balance, setBalance] = useState<BalanceData>()
   const [transactions, setTransactions] = useState<TransactionData[]>()
 
   useEffect(() => {
     const fetch = async () => {
-      const request = await api.get('/transactions')
+      const request = await api.get('/transactions', {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+
       setBalance(request.data.balance)
       setTransactions(request.data.transactions)
     }
 
     fetch()
-  }, [])
+  }, [token])
 
   return (
     <Container>

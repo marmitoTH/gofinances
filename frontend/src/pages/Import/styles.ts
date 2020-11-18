@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
 `
 
-export const Main = styled.main`
+export const Form = styled.form`
   flex: 1;
   width: min(90%, 736px);
   padding: min(5%, 64px);

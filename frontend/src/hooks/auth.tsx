@@ -3,6 +3,7 @@ import api from '../services/api'
 
 interface IAuthContext {
   user: object
+  token: string
 
   signIn(credentials: ISignInCredentials): Promise<void>
   signOut(): void
@@ -54,7 +55,7 @@ function AuthProvider({ children }: IAuthProviderProps) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data.user, token: data.token, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

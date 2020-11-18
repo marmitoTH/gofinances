@@ -9,9 +9,7 @@ import logo from '../../assets/images/logo.svg'
 
 function SignIn() {
   const { register, handleSubmit } = useForm()
-  const { signIn, user } = useAuth()
-
-  console.log(user)
+  const { signIn } = useAuth()
 
   return (
     <Container>
