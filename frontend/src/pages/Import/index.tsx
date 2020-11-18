@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import api from '../../services/api'
 import { useAuth } from '../../hooks/auth'
 import { useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { Container, Form, Footer, Warning, Title, Button } from './styles'
 import { AiOutlineWarning } from 'react-icons/ai'
 import Uploader from '../../components/Uploader'
@@ -26,6 +27,13 @@ function Import() {
     ).then(response => {
       if (response.status === 200) {
         history.push('/dashboard')
+        toast.success('Arquivo enviado!')
+      }
+    }).catch(error => {
+      switch (error.response.status) {
+        case 400:
+          toast.warning('Anexe um arquivo csv!')
+          break
       }
     })
   }
