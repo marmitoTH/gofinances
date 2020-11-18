@@ -4,7 +4,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 function Button({ children, ...rest }: ButtonProps) {
   return (
-    <Btn type='button' {...rest}>
+    <Btn {...rest}>
       {children}
     </Btn>
   )

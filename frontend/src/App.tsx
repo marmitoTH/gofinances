@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter, Switch, Route, RouteProps } from 'react-router-dom';
+import { AuthProvider } from './hooks/AuthContext'
 import GlobalStyles from './assets/styles/global'
 import Navbar from './components/Navbar'
 import SignIn from './pages/SignIn'
@@ -33,31 +34,33 @@ function App() {
 
   return (
     <Fragment>
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            component={SignIn}
-          />
-          <Route
-            path='/register'
-            component={SignUp}
-          />
-          <NavRoute
-            path='/dashboard'
-            component={Dashboard}
-          />
-          <NavRoute
-            path='/add'
-            component={Add}
-          />
-          <NavRoute
-            path='/import'
-            component={Import}
-          />
-        </Switch>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path='/'
+              component={SignIn}
+            />
+            <Route
+              path='/register'
+              component={SignUp}
+            />
+            <NavRoute
+              path='/dashboard'
+              component={Dashboard}
+            />
+            <NavRoute
+              path='/add'
+              component={Add}
+            />
+            <NavRoute
+              path='/import'
+              component={Import}
+            />
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
       <GlobalStyles />
     </Fragment>
   )

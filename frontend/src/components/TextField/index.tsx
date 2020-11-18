@@ -5,10 +5,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
 }
 
-function TextField(props: InputProps) {
-  return (
-    <Input {...props} />
-  )
-}
+const TextField = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <Input ref={ref} {...props} />
+))
 
 export default TextField
