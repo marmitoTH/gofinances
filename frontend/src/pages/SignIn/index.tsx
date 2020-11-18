@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { useAuth } from '../../hooks/AuthContext'
+import { useAuth } from '../../hooks/auth'
 import { Container, Main, Form, Footer, Logo, Subtitle } from './styles'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
