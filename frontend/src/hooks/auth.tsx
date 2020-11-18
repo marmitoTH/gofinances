@@ -39,6 +39,7 @@ function AuthProvider({ children }: IAuthProviderProps) {
 
   const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('/sessions', { email, password })
+
     const { token, user } = response.data
 
     localStorage.setItem('@gofinances/token', token)

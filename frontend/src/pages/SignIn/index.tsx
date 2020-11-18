@@ -1,30 +1,65 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { DeepMap, FieldError, useForm } from 'react-hook-form'
 import { useAuth } from '../../hooks/auth'
+import { toast } from 'react-toastify'
 import { Container, Main, Form, Footer, Logo, Subtitle } from './styles'
 import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 import logo from '../../assets/images/logo.svg'
 
+interface IFormInputs {
+  email: string
+  password: string
+}
+
+toast.configure()
 function SignIn() {
-  const { register, handleSubmit } = useForm()
   const { signIn } = useAuth()
+  const { register, handleSubmit } = useForm<IFormInputs>({
+    criteriaMode: 'all'
+  })
+
+  async function onSubmit(data: { email: string, password: string }) {
+    try {
+      await signIn({
+        email: data.email,
+        password: data.password
+      })
+    } catch {
+      toast.error('Email ou senha inválidos!')
+    }
+  }
+
+  function onError(error: DeepMap<IFormInputs, FieldError>) {
+    if (error.email?.types?.required
+      || error.password?.types?.required) {
+      toast.warning('Preencha todos os campos!')
+    }
+
+    if (error.email?.types?.pattern) {
+      toast.warning('Email inválido!')
+    }
+  }
 
   return (
     <Container>
       <Main>
         <Logo src={logo} alt='gofinances logo' />
         <Subtitle>Controle o seu dinheiro!</Subtitle>
-        <Form onSubmit={handleSubmit(signIn)}>
+        <Form onSubmit={handleSubmit(onSubmit, onError)}>
           <TextField
-            ref={register}
+            ref={register({
+              required: true,
+              pattern: /.+@.+/
+            })}
             name='email'
-            type='email'
             placeholder='Email'
           />
           <TextField
-            ref={register}
+            ref={register({
+              required: true
+            })}
             name='password'
             type='password'
             placeholder='Password'

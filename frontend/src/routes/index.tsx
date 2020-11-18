@@ -1,5 +1,12 @@
-import React, { Fragment } from 'react'
-import { Switch, Route as DOMRoute, RouteProps } from 'react-router-dom'
+import React from 'react'
+
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route as DOMRoute,
+  RouteProps
+} from 'react-router-dom'
+
 import Navbar from '../components/Navbar'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
@@ -36,7 +43,7 @@ function Routes() {
   }
 
   return (
-    <Fragment>
+    <Router>
       <Switch>
         <Route
           exact
@@ -62,7 +69,7 @@ function Routes() {
           component={Import}
         />
       </Switch>
-    </Fragment>
+    </Router>
   )
 }
 
