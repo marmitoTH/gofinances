@@ -13,7 +13,6 @@ interface IFormInputs {
   password: string
 }
 
-toast.configure()
 function SignIn() {
   const { signIn } = useAuth()
   const { register, handleSubmit } = useForm<IFormInputs>({
