@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 import { Header, Container, Background, Menu, Option, Button, Logo } from './styles'
 import { HiMenu } from 'react-icons/hi'
 import logo from '../../assets/images/logo.svg'
@@ -17,6 +18,7 @@ interface NavbarProps {
 
 function Navbar({ options }: NavbarProps) {
   const location = useLocation()
+  const { signOut } = useAuth()
   const [showMenu, setShowMenu] = useState(false)
   const [selectedId, setSelectedId] = useState<number>()
 
@@ -52,6 +54,14 @@ function Navbar({ options }: NavbarProps) {
           </Button>
           <Menu visible={showMenu}>
             {drawOptions()}
+            <Option>
+              <Link
+                to='/'
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </Link>
+            </Option>
           </Menu>
         </Container>
       </Header>
