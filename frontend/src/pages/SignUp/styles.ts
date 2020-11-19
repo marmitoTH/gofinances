@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { shade } from 'polished'
+import { FadeIn } from '../../assets/styles/animations'
 
 export const Container = styled.div`
   width: 100vw;
@@ -15,6 +16,7 @@ export const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: ${FadeIn} 400ms;
 `
 
 export const Form = styled.form`
