@@ -15,29 +15,16 @@ export const Main = styled.div`
 
 export const Form = styled.form`
   flex: 1;
+
+  input + input {
+    margin-top: 16px;
+  }
 `
 
 export const Title = styled.h1`
   font-size: min(5vw, 36px);
   margin-top: min(5vw, 64px);
   margin-bottom: min(3vw, 40px);
-`
-
-export const TextArea = styled.input`
-  width: 100%;
-  height: 50px;
-  display: block;
-  padding: 0 16px;
-  border-radius: 5px;
-  background: #f2f2f2;
-
-  ::placeholder {
-    color: #969CB3
-  }
-
-  & + & {
-    margin-top: 16px;
-  }
 `
 
 export const Toggle = styled.div`

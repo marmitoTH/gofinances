@@ -2,19 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-
-  @media(min-width: 1000px) {
-    padding: 30px 0;
-  }
+  flex-direction: column;
+  align-items: center;
 `
 
 export const Main = styled.main`
-  flex: 1;
-  max-width: min(90%, 1120px);
-  flex-direction: column;
-
-  @media(min-width: 1000px) {
-    display: flex;
-  }
+  width: min(90%, 1120px);
+  margin: 30px 0;
 `

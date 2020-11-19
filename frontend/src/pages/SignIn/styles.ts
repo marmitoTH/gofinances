@@ -32,7 +32,7 @@ export const Form = styled.form`
 export const Footer = styled.footer`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   a {
     color: #fff;

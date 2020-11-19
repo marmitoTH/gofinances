@@ -66,8 +66,7 @@ function SignIn() {
           <Button>Entrar</Button>
         </Form>
         <Footer>
-          <Link to='/forgot'>Esqueci minha senha</Link>
-          <Link to='/register'>Criar conta</Link>
+          <Link to='/register'>Não é usuário? Criar conta</Link>
         </Footer>
       </Main>
     </Container>

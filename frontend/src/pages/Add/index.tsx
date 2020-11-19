@@ -4,7 +4,8 @@ import { useAuth } from '../../hooks/auth'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import api from '../../services/api'
-import { Container, Main, Form, Title, TextArea, Toggle, Button } from './styles'
+import TextField from '../../components/TextField'
+import { Container, Main, Form, Title, Toggle, Button } from './styles'
 import TypeToggle from '../../components/TypeToggle'
 
 interface Inputs {
@@ -52,7 +53,7 @@ function Add() {
     }
 
     if (error.value?.types?.pattern) {
-      toast.warning('Preço deve conter apenas números!')
+      toast.warning('Preço deve conter um número decimal!')
     }
   }
 
@@ -61,7 +62,7 @@ function Add() {
       <Title>Cadastrar</Title>
       <Main>
         <Form>
-          <TextArea
+          <TextField
             ref={register({
               required: true,
               maxLength: 32
@@ -69,16 +70,16 @@ function Add() {
             name='title'
             placeholder='Nome'
           />
-          <TextArea
+          <TextField
             ref={register({
               required: true,
               pattern: /^[0-9]+(\.[0-9]+)?$/
             })}
             name='value'
-            type='number'
+            filter='decimal'
             placeholder='Preço'
           />
-          <TextArea
+          <TextField
             ref={register({
               required: true,
               maxLength: 32
