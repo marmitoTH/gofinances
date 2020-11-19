@@ -1,3 +1,14 @@
+<h3 align="center">
+  <img src='https://user-images.githubusercontent.com/25598040/99703580-0860c800-2a76-11eb-9c4d-e58bfa026ff9.png'>
+</h3>
+
+<p align='center'>
+    <img src="https://img.shields.io/badge/Backend-Node.js-green?style=flat-square&link=https://nodejs.org/">
+    <img src="https://img.shields.io/badge/Frontend-React-blue?style=flat-square&link=https://reactjs.org/">
+    <img src="https://img.shields.io/badge/Database-PostgreSQL-blue?style=flat-square&link=https://www.postgresql.org/">
+    <img src="https://img.shields.io/badge/Lucas-social-green?logo=linkedin&style=social&link=https://www.linkedin.com/in/lucas-rodrigues-985918197/">
+</p>
+
 ## About
 
 <p align='center'>
@@ -10,7 +21,7 @@ Both backend and frontend where made using [Typescript](https://www.typescriptla
 
 GoFinances is part of the GoStack Bootcamp Challanges by Rocketseat. 
 
-## Demo
+### Demo
 
 <p align='center'>
     <img src='https://user-images.githubusercontent.com/25598040/99688639-cd09cd80-2a64-11eb-8d5b-0ff142c8c32b.gif'>
@@ -68,4 +79,58 @@ The server will be listening the port `3333`.
 ```
 yarn install        # Install all dependencies
 yarn start          # Start the application
+```
+
+## Routes
+
+### Users
+
+```
+POST /users
+
+{
+	"name": "Your Name",
+	"email": "your_email@mail.com",
+	"password": "your_password"
+}
+```
+
+### Sessions
+
+```
+POST /sessions
+
+{
+	"email": "your_email@mail.com",
+	"password": "your_password"
+}
+```
+
+### Transactions
+
+```
+GET /transactions
+```
+
+```
+GET /transactions/take/1/skip/0         # Pagination
+```
+
+```
+POST /transactions
+
+{
+	"title": "New Transaction",
+	"value": 12000,
+	"type": "income" | "outcome",
+	"category": "New or existing category"
+}
+```
+
+```
+POST /transactions/import       # CSV file must be sent via multipart form
+```
+
+```
+DELETE /transactions/:id
 ```
