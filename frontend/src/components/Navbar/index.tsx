@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
-import { Header, Container, Background, Menu, Option, Button, Logo } from './styles'
+import { Header, Container, Background, Menu, Option, Separator, Button, Logo } from './styles'
 import { HiMenu } from 'react-icons/hi'
 import { MdExitToApp } from 'react-icons/md'
 import logo from '../../assets/images/logo.svg'
+import { toast } from 'react-toastify'
 
 interface OptionProps {
   title: string
@@ -55,18 +56,22 @@ function Navbar({ options }: NavbarProps) {
           </Button>
           <Menu visible={showMenu}>
             {drawOptions()}
-          </Menu>
-          <Option>
-            <Link
-              to='/'
-              onClick={() => signOut()}
-            >
-              <aside>
-                <MdExitToApp />
-              </aside>
+            <Separator />
+            <Option>
+              <Link
+                to='/'
+                onClick={() => {
+                  signOut()
+                  toast.info('Você saiu da aplicação!')
+                }}
+              >
+                <aside>
+                  <MdExitToApp />
+                </aside>
               Sign Out
             </Link>
-          </Option>
+            </Option>
+          </Menu>
         </Container>
       </Header>
       <Background

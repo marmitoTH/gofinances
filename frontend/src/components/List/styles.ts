@@ -127,6 +127,10 @@ export const Message = styled.h1`
     color: #FF872C;
     text-decoration: none;
   }
+
+  a:hover {
+    color: ${shade(0.1, '#FF872C')};
+  }
 `
 
 export const RemoveButton = styled.button`

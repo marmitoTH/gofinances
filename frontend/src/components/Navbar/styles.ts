@@ -83,9 +83,7 @@ export const Option = styled.li<OptionProps>`
     text-decoration: none;
 
     aside {
-      display: flex;
-      font-size: 20px;
-      margin-right: 5px;
+      display: none;
     }
   }
 
@@ -97,6 +95,12 @@ export const Option = styled.li<OptionProps>`
     a {
       opacity: 0.8;
       transition: opacity 200ms;
+
+      aside {
+        display: flex;
+        font-size: 20px;
+        margin-right: 5px;
+      }
 
       &:hover {
         opacity: 1;
@@ -111,6 +115,17 @@ export const Option = styled.li<OptionProps>`
     & + & {
       margin-left: 32px;
     }
+  }
+`
+
+export const Separator = styled.section`
+  margin-top: 5px;
+  border-bottom: 2px solid #FF872C;
+
+  @media(min-width: 1000px) {
+    border: none;
+    margin-top: 0;
+    margin-left: 60px;
   }
 `
 

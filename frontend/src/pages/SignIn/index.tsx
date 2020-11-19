@@ -25,6 +25,8 @@ function SignIn() {
         email: data.email,
         password: data.password
       })
+
+      toast.success('Autenticado com sucesso!')
     } catch {
       toast.error('Email ou senha inválidos!')
     }
