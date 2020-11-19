@@ -52,6 +52,7 @@ export const Background = styled.div<BackgroundProps>`
 export const Menu = styled.ul<MenuProps>`
   padding: 10px 20px;
   position: absolute;
+  z-index: 1;
   right: 0;
   top: 80px;
   background: #5636D3;
