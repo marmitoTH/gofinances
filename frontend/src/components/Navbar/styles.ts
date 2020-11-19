@@ -71,15 +71,27 @@ export const Menu = styled.ul<MenuProps>`
 `
 
 export const Option = styled.li<OptionProps>`
+  display: block;
   list-style-type: none;
   text-align: right;
 
   a {
-    display: block;
     height: 35px;
+    display: flex;
+    align-items: center;
     color: #fff;
     text-decoration: none;
+
+    aside {
+      display: flex;
+      font-size: 20px;
+      margin-right: 5px;
+    }
   }
+
+  ${props => props.selected && css`
+    height: 32px;
+  `}
 
   @media(min-width: 1000px) {
     a {
@@ -92,7 +104,6 @@ export const Option = styled.li<OptionProps>`
 
       ${props => props.selected && css`
         opacity: 1;
-        height: 32px;
         border-bottom: 2px solid #FF872C;
       `}
     }

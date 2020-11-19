@@ -1,3 +1,4 @@
+import { shade } from 'polished'
 import styled from 'styled-components'
 
 interface ValueProps {
@@ -31,7 +32,7 @@ export const Header = styled.header`
 export const Options = styled.nav`
   display: none;
   text-align: center;
-  padding: 0 24px;
+  padding: 0 60px;
   color: #969CB3;
 
   @media(min-width: 1000px) {
@@ -77,6 +78,7 @@ export const Element = styled.div`
 
 export const Footer = styled.footer`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   color: #969CB3;
 
@@ -113,5 +115,30 @@ export const Date = styled.div`
   @media(min-width: 1000px) {
     flex: 1;
     text-align: right;
+  }
+`
+
+export const Message = styled.h1`
+  text-align: center;
+  font-size: min(6vw, 28px);
+  margin-top: 50px;
+
+  a {
+    color: #FF872C;
+    text-decoration: none;
+  }
+`
+
+export const RemoveButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #969CB3;
+  background: none;
+  margin-left: 15px;
+
+  &:hover {
+    color: ${shade(0.3, '#969CB3')};
   }
 `

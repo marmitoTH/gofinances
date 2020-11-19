@@ -29,7 +29,7 @@ function Add() {
         title: data.title,
         value: data.value,
         type: data.type,
-        category: data.type
+        category: data.category
       },
       {
         headers: {
@@ -40,6 +40,12 @@ function Add() {
       if (response.status === 201) {
         history.push('/dashboard')
         toast.success('Transação cadastrada!')
+      }
+    }).catch(error => {
+      switch (error.response?.status) {
+        case 400:
+          toast.error('Balanço insuficiente!')
+          break
       }
     })
   }

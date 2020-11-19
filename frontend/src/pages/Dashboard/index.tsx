@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useAuth } from '../../hooks/auth'
 import api from '../../services/api'
 import { Container, Main } from './styles'
 import Balance from '../../components/Balance'
 import List from '../../components/List'
+import { toast } from 'react-toastify'
 
 interface BalanceData {
   income: number
@@ -12,6 +13,7 @@ interface BalanceData {
 }
 
 interface TransactionData {
+  id: number
   title: string
   value: number
   type: string
@@ -28,20 +30,32 @@ function Dashboard() {
   const [balance, setBalance] = useState<BalanceData>()
   const [transactions, setTransactions] = useState<TransactionData[]>()
 
-  useEffect(() => {
-    const fetch = async () => {
-      const request = await api.get('/transactions', {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      })
+  const loadTransactions = useCallback(async () => {
+    const request = await api.get('/transactions', {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
 
-      setBalance(request.data.balance)
-      setTransactions(request.data.transactions)
-    }
-
-    fetch()
+    setBalance(request.data.balance)
+    setTransactions(request.data.transactions)
   }, [token])
+
+  const removeTransaction = useCallback(async (id: number) => {
+    await api.delete(`/transactions/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    }).then(response => {
+      toast.info('Transação deletada!')
+    })
+
+    loadTransactions()
+  }, [token, loadTransactions])
+
+  useEffect(() => {
+    loadTransactions()
+  }, [loadTransactions])
 
   return (
     <Container>
@@ -53,7 +67,9 @@ function Dashboard() {
         />
         {transactions && <List
           title='Listagem'
+          onRemove={removeTransaction}
           transactions={transactions.map(transaction => ({
+            id: transaction.id,
             title: transaction.title,
             value: transaction.value,
             type: transaction.type,

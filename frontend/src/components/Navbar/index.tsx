@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { Header, Container, Background, Menu, Option, Button, Logo } from './styles'
 import { HiMenu } from 'react-icons/hi'
+import { MdExitToApp } from 'react-icons/md'
 import logo from '../../assets/images/logo.svg'
 
 interface OptionProps {
@@ -54,15 +55,18 @@ function Navbar({ options }: NavbarProps) {
           </Button>
           <Menu visible={showMenu}>
             {drawOptions()}
-            <Option>
-              <Link
-                to='/'
-                onClick={() => signOut()}
-              >
-                Sign Out
-              </Link>
-            </Option>
           </Menu>
+          <Option>
+            <Link
+              to='/'
+              onClick={() => signOut()}
+            >
+              <aside>
+                <MdExitToApp />
+              </aside>
+              Sign Out
+            </Link>
+          </Option>
         </Container>
       </Header>
       <Background
