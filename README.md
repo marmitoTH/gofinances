@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/badge/Lucas-social-green?logo=linkedin&style=social&link=https://www.linkedin.com/in/lucas-rodrigues-985918197/">
 </p>
 
-## About
+## 🔍 About
 
 <p align='center'>
     <img src='https://user-images.githubusercontent.com/25598040/99694034-be261980-2a6a-11eb-877c-4ad32fad7623.png'>
@@ -21,7 +21,7 @@ Both backend and frontend where made using [Typescript](https://www.typescriptla
 
 GoFinances is part of the GoStack Bootcamp Challanges by Rocketseat. 
 
-### Demo
+## 👀 Demo
 
 <p align='center'>
     <img src='https://user-images.githubusercontent.com/25598040/99688639-cd09cd80-2a64-11eb-8d5b-0ff142c8c32b.gif'>
@@ -29,7 +29,7 @@ GoFinances is part of the GoStack Bootcamp Challanges by Rocketseat.
     <img src='https://user-images.githubusercontent.com/25598040/99691439-0132bd80-2a68-11eb-9302-6ac0ed58373e.gif'>
 </p>
 
-## Made With
+## 🔧 Made With
 
 ### Backend
 
@@ -55,7 +55,7 @@ GoFinances is part of the GoStack Bootcamp Challanges by Rocketseat.
 - [React Drop Zone](https://www.npmjs.com/package/react-drop-zone)
 - [React Icons](https://www.npmjs.com/package/react-icons)
 
-## Installation
+## 🔌 Installation
 
 Clone the repository to your machine:
 
@@ -81,7 +81,7 @@ yarn install        # Install all dependencies
 yarn start          # Start the application
 ```
 
-## Routes
+## 🚩 Routes
 
 ### Users
 
